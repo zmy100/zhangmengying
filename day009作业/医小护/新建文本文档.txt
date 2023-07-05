@@ -4,18 +4,15 @@
     background: url('css_sprites.png') -1px -1px;
 }
 
-
 .bg-person {
     width: 88px; height: 115px;
     background: url('css_sprites.png') -87px -1px;
 }
 
-
 .bg-money {
     width: 104px; height: 113px;
     background: url('css_sprites.png') -276px -1px;
 }
-
 
 .bg-phone {
     width: 97px; height: 114px;

@@ -4,12 +4,10 @@
     background: url('css_sprites.png') -30px -1px;
 }
 
-
 .bg-logo1 {
     width: 9px; height: 12px;
     background: url('css_sprites.png') -1px -1px;
 }
-
 
 .bg-iPhone {
     width: 16px; height: 20px;
