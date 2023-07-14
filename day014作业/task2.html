@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 清空内外边距 */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      /* 设置版心 */
+      div.container {
+        width: 1528px;
+        height: 455px;
+        margin: 0 auto;
+      }
+      div.products {
+        width: 455px;
+        height: 425px;
+      }
+      div.products:first-child {
+        margin-left: 50px;
+      }
+      div.products:last-child {
+        margin-right: 0;
+      }
+      /* 设置左浮动 */
+      .fl {
+        float: left;
+      }
+      /* 设置图片 */
+      img {
+        width: 404px;
+        height: 224px;
+        margin-left: 50px;
+        margin-bottom: 43px;
+      }
+      div.content {
+        margin-left: 50px;
+      }
+      p.comments {
+        font-size: 14px;
+        color: #aaaaaa;
+        margin-bottom: 5px;
+      }
+      p.title {
+        font-size: 18px;
+        color: #333;
+        height: 60px;
+        width: 100%;
+      }
+      a {
+        text-decoration: none;
+        font-size: 14px;
+        color: #e40112;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="products fl">
+        <img
+          src="https://oss.static.nubia.cn/NewsCenter/2023-05-05/399548281f473898d484177f5f66defb.jpg"
+          alt=""
+        />
+        <div class="content">
+          <p class="comments">产品热评</p>
+          <p class="title">媒体眼中的红魔7SPro大黄蜂透明限量典藏版</p>
+          <a href="#">了解更多></a>
+        </div>
+      </div>
+      <div class="products fl">
+        <img
+          src="https://oss.static.nubia.cn/News/2023-05-16/1fb58baee6b980296bf4ec86aa4bb00e.jpg"
+          alt=""
+        />
+        <div class="content">
+          <p class="comments">新闻中心</p>
+          <p class="title">
+            致敬热血热爱的变形金刚IP！红魔电竞宇宙带来全新超酷装备
+          </p>
+          <a href="#">了解更多></a>
+        </div>
+      </div>
+      <div class="products fl">
+        <img
+          src="https://oss.static.nubia.cn/videogallery/165119768030.jpg"
+          alt=""
+        />
+        <div class="content">
+          <p class="comments">视频长廊</p>
+          <p class="title">红魔7系列变形金刚联名定制版</p>
+          <a href="#">了解更多></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
