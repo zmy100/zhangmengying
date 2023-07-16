@@ -1,14 +1,17 @@
+/* 框架 */
 /* 清空内外边距 */
 * {
   margin: 0;
   padding: 0;
+}
+body {
+  background-color: #f7f7f7;
 }
 /* 设置版心 */
 .container {
   width: 1201px;
   height: 769px;
   margin: 0 auto;
-  background-color: rebeccapurple;
 }
 /* 设置标题 */
 div.info p {
@@ -19,14 +22,13 @@ div.info p {
 div.ad {
   width: 595px;
   height: 380px;
-  background-color: blue;
   margin-right: 9.5px;
   margin-bottom: 9px;
 }
 div.item {
   width: 293px;
   height: 380px;
-  background-color: olivedrab;
+  background-color: #ffffff;
   margin-right: 9.5px;
   margin-bottom: 9px;
 }
@@ -37,4 +39,38 @@ div.item:nth-child(7) {
 /* 设置左浮动 */
 .fl {
   float: left;
+}
+
+/* 具体内容 */
+div.ad > img {
+  width: 595px;
+  height: 380px;
+}
+div.item > img {
+  width: 172px;
+  height: 172px;
+  margin-top: 43px;
+  margin-left: 62px;
+}
+p.product {
+  color: #333;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  margin-top: 10px;
+}
+p.intro {
+  height: 24px;
+  color: #333;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 48px;
+}
+p.price {
+  color: #f51919;
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
 }
