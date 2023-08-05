@@ -6,15 +6,18 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- 交换两个变量的值 -->
+    <!-- 小兔子拔萝卜 -->
     <script>
-      var a = 5,
-        b = 7,
-        c;
-      c = a;
-      a = b;
-      b = c;
-      console.log(a, b);
+      var i = 1;
+      sum = 0;
+      while (true) {
+        sum += i;
+        if (sum >= 500) {
+          break;
+        }
+        i++;
+      }
+      alert("小兔子" + i + "天,可以拔光500个萝卜");
     </script>
   </body>
 </html>

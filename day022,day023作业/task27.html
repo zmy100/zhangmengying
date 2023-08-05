@@ -6,15 +6,17 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- 交换两个变量的值 -->
+    <!-- 改写代码 -->
     <script>
-      var a = 5,
-        b = 7,
-        c;
-      c = a;
-      a = b;
-      b = c;
-      console.log(a, b);
+      var i = 1;
+      var sum = 0;
+      while (i <= 100) {
+        if (i % 2===0) {
+          sum += i;
+        }
+        i++;
+      }
+      console.log(sum);
     </script>
   </body>
 </html>
