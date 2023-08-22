@@ -14,15 +14,17 @@
       var num = 0;
       // 定义写入span中的html代码
       var spanInnerHTML = "";
-      //   找对象
+      // 找对象
+      // textarea标签
       var textarea = document.querySelector("textarea");
+      // span标签
       var span = document.querySelector("span");
-      //   监听，用户输入则触发
+      // 监听，用户输入触发
       textarea.oninput = function () {
         num = 30;
         // 减去用户输入的数字
         num -= this.value.length;
-        // 数字如果大于0，提示还可以输入...数字小于等于0，提示已超出...
+        // 如果数字大于0，提示还可以输入...数字小于等于0，提示已超出...
         if (num > 0) {
           spanInnerHTML = "您还可以输入<b>" + num + "</b>字";
         } else {

@@ -16,12 +16,14 @@
         // 找对象
         var select = document.getElementById("color");
         var div = document.getElementById("div");
-        //选择颜色
+        // 选择颜色
         select.onchange = function () {
+          // 如果下拉菜单的值不等于"0"，设置背景颜色和文字信息
           if (this.value != "0") {
             div.innerHTML = "我的背景色是" + this.value + "色";
             div.style.backgroundColor = this.value;
           } else {
+            // 如果下拉菜单的值等于"0"，设置文字信息，清空背景颜色
             div.innerHTML = "我没有任何变化";
             div.style.backgroundColor = "";
           }
