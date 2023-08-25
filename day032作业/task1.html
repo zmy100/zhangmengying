@@ -54,10 +54,8 @@
         clearInterval(timer);
         // 开启定时器
         timer = setInterval(function () {
-          // 判断图片的位置
-          // 如果是最后一张图片的位置
+          // 如果是最后一张图片的位置,则瞬间移动到第一张图片的位置
           if (left === -1260) {
-            // 瞬间移动到第一张
             left = 0;
           }
           // 图片向左移动
@@ -72,7 +70,7 @@
         clearInterval(timer);
       };
       // 鼠标移出, 图片继续滚动
-      list.onmouseout = function () {
+      list.onmouseleave = function () {
         move();
       };
     </script>
