@@ -1,157 +1,125 @@
 <!DOCTYPE html>
-<html lang="zh">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>jQuery彩色带图标Tabs选项卡代码</title>
-		<style>
-			.tabs-vertical {
-				font: bold 13px sans-serif;
-				background-color: #f7f7f7;
-				box-shadow: 0 0 22px #e2e2e2 inset, 2px 2px 3px #e8e8e8;
-				border: 1px solid #cecece;
-				margin: 30px auto 30px;
-				max-width: 580px;
-				text-align: center;
-				border-radius: 2px;
-			}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>插入制定表格数的表格</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="" rel="stylesheet" />
+    <style>
+      body {
+        font: 700 14px/1.5 Arial;
+        margin: 0;
+        padding: 0 10px;
+      }
+      table {
+        clear: both;
+        border: 1px solid #000;
+      }
+      td {
+        cursor: pointer;
+        text-align: center;
+        border: 1px solid #000;
+        padding: 5px;
+      }
+      #setting {
+        float: left;
+        clear: left;
+        line-height: 28px;
+        margin: 10px 0;
+      }
+      #setting input {
+        width: 50px;
+        font-family: inherit;
+        border: 2px solid #ccc;
+        margin: 0 5px;
+        padding: 4px;
+      }
+      #btn {
+        font-size: 14px;
+        line-height: 18px;
+        color: #fff;
+        text-decoration: none;
+        background: #353535;
+        border-top: 1px #999 solid;
+        border-radius: 5px;
+        padding: 4px 6px;
+      }
+      em {
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        margin-right: 5px;
+      }
+      #setting label,
+      #setting input,
+      #setting a {
+        float: left;
+      }
+      strong {
+        color: red;
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="setting">
+      <label>行数</label>
+      <input type="text" id="row" />
+      <label>列数</label>
+      <input type="text" id="col" />
+      <a href="javascript:;" id="btn">生成表格</a>
+      <strong>提示：行和列只能是数字，且最大为50</strong>
+    </div>
+    <div id="tableContainer"></div>
+    <script>
+      // 找对象
+      // 行数
+      var rows = document.getElementById("row");
+      // 列数
+      var cols = document.getElementById("col");
+      // 按钮
+      var button = document.getElementById("btn");
 
-			/* The tabs */
-
-			.tabs-vertical ul {
-				float: left;
-				list-style: none;
-				text-align: left;
-
-				margin: 0;
-				padding-left: 0;
-			}
-
-			.tabs-vertical ul li {
-				margin-right: -1px;
-			}
-
-			.tabs-vertical ul li a {
-				display: block;
-				text-decoration: none;
-				color: #656a6d;
-
-				border: 1px solid transparent;
-				border-right: 0;
-				border-left: 0;
-
-				padding: 16px 40px 16px 20px;
-			}
-
-			.tabs-vertical ul li a.tab-active {
-				border-color: #dddddd;
-				background-color: #ffffff;
-				box-shadow: 0px 2px 0px #efefef;
-			}
-
-			.tabs-vertical ul li:first-child a {
-				border-top: 0;
-			}
-
-			/* The content */
-
-			.tabs-vertical .tabs-content-placeholder {
-				overflow: hidden;
-				border-left: 1px solid #dddddd;
-				font-weight: normal;
-				background-color: #fff;
-				padding: 20px 40px 45px;
-				margin: 0 auto;
-				box-shadow: -3px 0 0px #f3f3f3;
-				text-align: center;
-			}
-
-			.tabs-vertical .tabs-content-placeholder div {
-				display: none;
-			}
-
-			.tabs-vertical .tabs-content-placeholder div.tab-content-active {
-				display: block;
-			}
-
-			.tabs-vertical .tabs-content-placeholder div p {
-				color: #565a5c;
-				line-height: 1.5;
-				text-align: left;
-
-				margin: 5px 0 20px;
-			}
-
-			.tabs-vertical .tabs-content-placeholder div img {
-				max-width: 100%;
-			}
-
-			@media (max-width: 600px) {
-				.tabs-vertical ul {
-					float: none;
-				}
-
-				.tabs-vertical ul li {
-					display: inline-block;
-					margin-bottom: -1px;
-				}
-
-				.tabs-vertical ul li a {
-					border: 1px solid transparent;
-					border-bottom: 0;
-					border-top: 0;
-					padding: 12px 15px;
-				}
-
-				.tabs-vertical ul li a.tab-active {
-					border-color: #dddddd;
-					background-color: #ffffff;
-					box-shadow: 2px 0px 0px #efefef;
-				}
-
-				.tabs-vertical ul li:first-child a {
-					border-left: 0;
-				}
-
-				.tabs-vertical .tabs-content-placeholder {
-					padding: 15px 30px 30px;
-					border-left: 0;
-					border-top: 1px solid #dddddd;
-					box-shadow: 0px -3px 0px #f3f3f3;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<div class="jq22-container">
-			<div class="tabs-vertical">
-				<ul>
-					<li>
-						<a class="tab-active" data-index="0" href="#">选项一</a>
-					</li>
-					<li>
-						<a data-index="1" href="#">选项二</a>
-					</li>
-					<li>
-						<a data-index="2" href="#">选项三</a>
-					</li>
-				</ul>
-				<div class="tabs-content-placeholder">
-					<div class="tab-content-active">
-						<p>游泳池 1</p>
-						<img src="img/industrial-mech.jpg" alt="Industrial Mech" />
-					</div>
-					<div>
-						<p>斗兽场 2</p>
-						<img src="img/colosseum.jpg" alt="Colosseum" />
-					</div>
-					<div>
-						<p>雪山 3</p>
-						<img src="img/sahale-wa.jpg" alt="Sahale Wa" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
+      // 给按钮添加点击事件
+      button.onclick = function () {
+        // 行数或列数为空，弹框提示
+        if (rows.value === "" || cols.value === "") {
+          alert("行数和列数不能为空!");
+          return;
+        }
+        // 行数或列数不是整数，弹框提示
+        if (isNaN(parseInt(rows.value)) || isNaN(parseInt(cols.value))) {
+          alert("请输入整数！");
+          return;
+        }
+        // 行数或列数超过规定范围，弹框提示
+        if (rows.value > 50 || cols.value > 50) {
+          alert("行数和列数不能超过50!");
+          return;
+        }
+        // 根据行数和列数生成表格, 里面是随机的数字和随机的背景颜色
+        var str = "<table>";
+        for (var i = 0; i < rows.value; i++) {
+          str += "<tr>";
+          for (var j = 0; j < cols.value; j++) {
+            str +=
+              "<td style='background-color:rgb(" +
+              Math.floor(100 + Math.random() * 156) +
+              "," +
+              Math.floor(100 + Math.random() * 156) +
+              "," +
+              Math.floor(100 + Math.random() * 156) +
+              ")'>" +
+              Math.floor(Math.random() * 100) +
+              "</td>";
+          }
+          str += "</tr>";
+        }
+        // 把表格插入到页面中
+        document.getElementById("tableContainer").innerHTML = str;
+      };
+    </script>
+  </body>
 </html>
