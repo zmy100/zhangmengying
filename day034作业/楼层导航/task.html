@@ -93,25 +93,53 @@
       // 找对象
       var imgArray = document.querySelectorAll("div.container img");
       var liArray = document.querySelectorAll("div.nav ul li");
-      // 监听滚动
+      // 定义一个数组，保存所有距离
+      var distanceArr = [];
+      for (var i = 0; i < imgArray.length; i++) {
+        // 把图片距离顶部的高度保存到数组中
+        distanceArr.push(imgArray[i].offsetTop);
+      }
+      // 楼层添加点击事件
+      for (var i = 0; i < liArray.length; i++) {
+        liArray[i].onclick = function () {
+          // 熄灭所有楼层
+          turnOffHighLight(liArray);
+          // 高亮当前楼层
+          this.className = "current";
+          // 获取当前楼层的index
+          var currentIndex = parseInt(this.getAttribute("index"));
+          // 获取应该滚动到的距离
+          var targetDistance = distanceArr[currentIndex];
+          // 页面滚动到指定的位置
+          document.documentElement.scrollTop = targetDistance;
+        };
+      }
+      // 刚加载的时候，判断一下当前哪个楼层高亮
+      turnOnHighLight(window.scrollY);
+      // 监听window滚动
       window.onscroll = function () {
+        turnOnHighLight(window.scrollY);
+      };
+      // 关闭楼层高亮
+      function turnOffHighLight(liArray) {
+        for (var i = 0; i < liArray.length; i++) {
+          // 去除className中的current
+          liArray[i].className = "";
+        }
+      }
+      // 楼层高亮
+      function turnOnHighLight(currentDistance) {
         // 遍历所有图片
         for (var i = 0; i < imgArray.length; i++) {
-          // 如果当前位置大于等于图片的父元素位置
-          if (window.scrollY >= imgArray[i].offsetTop) {
+          // 如果滚动条的滚动距离大于等于图片距离顶部的距离，说明开始显示这张图片
+          if (currentDistance >= imgArray[i].offsetTop) {
             // 熄灭所有楼层
             turnOffHightLight(liArray);
             // 高亮当前图片对应的楼层
             liArray[i].className = "current";
           }
         }
-        // 关闭楼层高亮
-        function turnOffHightLight(liArray) {
-          for (var i = 0; i < liArray.length; i++) {
-            liArray[i].className = "";
-          }
-        }
-      };
+      }
     };
   </script>
 </html>
