@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var a = 11;
+      var obj = {
+        a: 22,
+        fun: (function () {
+          var a = this.a;
+          return function () {
+            console.log(a + this.a);
+          };
+        })(),
+      };
+      obj.fun(); /* 结果:33 */
+      // 1.obj.fun()下面输出两个值的和(a + this.a)
+      // 2.a————规则2，a=this.a,在function()里面，找window对象，a=11
+      // 3.this.a————规则1，这个this.a是obj.fun()下面的，是obj对象里面的a,a=22
+    </script>
+  </body>
+</html>

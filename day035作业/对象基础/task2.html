@@ -115,16 +115,18 @@
     // 找对象
     var table = document.querySelector("table");
     // 定义空变量
-    var tr;
-    var td;
+    var tr = null;
+    var td = null;
     // 遍历对象
     for (var i in obj) {
-      // 创建tr标签
+      // 创建行元素
       tr = document.createElement("tr");
       for (var j in obj[i]) {
-        // 创建td标签
+        // 创建列元素
         td = document.createElement("td");
+        // 将列元素添加到行元素后面
         tr.appendChild(td);
+        // 添加内容
         switch (j) {
           case "age":
             td.innerHTML = obj[i][j] + "岁";
@@ -140,6 +142,7 @@
             break;
         }
       }
+      // 将行元素添加到表格后面
       table.appendChild(tr);
     }
   </script>
