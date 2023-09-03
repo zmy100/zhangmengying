@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div.box > img {
+        width: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      // 找对象，找到做为容器的dom元素
+      var box = document.querySelector("div.box");
+      // 构造函数
+      function TrafficLight() {
+        // 颜色，1：红色，2：黄色，3：绿色
+        this.color = 1;
+        // 要生成的dom元素，默认为空
+        this.dom = null;
+        // 初始化
+        this.init();
+      }
+      // 初始化
+      TrafficLight.prototype.init = function () {
+        // 创建img孤儿节点
+        this.dom = document.createElement("img");
+        // 默认红灯亮
+        this.dom.src = "./img/" + this.color + ".jpg";
+        // 图片加到div.box后面
+        box.appendChild(this.dom);
+        // 绑定点击事件
+        this.bindEvent();
+      };
+      // 绑定事件
+      TrafficLight.prototype.bindEvent = function () {
+        // 保存当前的this
+        var that = this;
+        // 给dom元素添加点击事件
+        this.dom.onclick = function () {
+          // 调用对象的切换颜色方法
+          that.changeColor();
+        };
+      };
+      // 切换颜色
+      TrafficLight.prototype.changeColor = function () {
+        // 当前颜色代表的数字加1
+        this.color++;
+        // 如果this.color=4,变为1
+        if (this.color == 4) {
+          this.color = 1;
+        }
+        // 动态修改src的属性
+        this.dom.src = "./img/" + this.color + ".jpg";
+      };
+      // 实例化一百个对象
+      for (var i = 0; i < 100; i++) {
+        // 实例化对象
+        new TrafficLight();
+      }
+    </script>
+  </body>
+</html>
