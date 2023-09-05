@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span id="code"></span>
+    <button onclick="randomStr()">看不清</button>
+    <script>
+      // 找对象
+      var span = document.getElementById("code"); //验证码
+      var button = document.querySelector("button"); //按钮
+
+      // 按钮添加点击事件
+      button.onclick = function () {
+        // 定义验证码内容
+        var codeContent = "";
+        // 所有字符串的内容
+        var content =
+          "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        // 生成随机的字符串，下标随机
+        codeContent =
+          content[getRandom(0, 61)] +
+          content[getRandom(0, 61)] +
+          content[getRandom(0, 61)] +
+          content[getRandom(0, 61)];
+        // 把随机的字符串写入到dom里面
+        span.innerHTML = codeContent;
+      };
+      // 进入页面，按钮点击一次，随机显示一次验证码
+      button.onclick();
+      // 定义一个取随机数的方法
+      function getRandom(a, b) {
+        return parseInt(Math.random() * (b - a + 1)) + a;
+      }
+    </script>
+  </body>
+</html>
