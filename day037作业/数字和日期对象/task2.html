@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        margin: 0 auto;
+        margin-top: 50px;
+        padding: 10px;
+        /* 边框 */
+        border: 1px solid orange;
+        border-radius: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th colspan="7"></th>
+      </tr>
+      <tr>
+        <td>日</td>
+        <td>一</td>
+        <td>二</td>
+        <td>三</td>
+        <td>四</td>
+        <td>五</td>
+        <td>六</td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    // 获取用户输入的年月
+    var string = prompt("请输入年月,以空格隔开");
+    var yearString = string.split(" ")[0];
+    var monthString = string.split(" ")[1];
+    // 获取table对象
+    var table = document.querySelector("table");
+    // 修改表头
+    document.querySelector("th").innerHTML =
+      yearString + " 年 " + monthString + " 月 ";
+
+    // 获取这个月有多少天数
+    var daySumcurrentMonth = new Date(yearString, monthString, 0).getDate();
+    // 获取本月1号是星期几
+    var firstDaytoWeekDayMonth = new Date(
+      yearString,
+      parseInt(monthString - 1),
+      1
+    ).getDay();
+
+    // 需要的td的数量
+    var tdSum = daySumcurrentMonth + firstDaytoWeekDayMonth;
+
+    // 生成数组
+    var dateStringArray = [];
+    // 遍历
+    for (var i = 0; i < tdSum; i++) {
+      dateStringArray.unshift(daySumcurrentMonth);
+      daySumcurrentMonth--;
+    }
+
+    // 需要的tr的数量
+    var trSum = Math.ceil(tdSum / 7);
+
+    // 计数
+    var count = 0;
+    // for循环生成节点，拼接到table里面
+    for (var i = 0; i < trSum; i++) {
+      var tr = document.createElement("tr");
+      for (var j = 0; j < 7; j++) {
+        var td = document.createElement("td");
+        td.innerHTML =
+          dateStringArray[count] <= 0 || !dateStringArray[count]
+            ? ""
+            : dateStringArray[count];
+        count++;
+        tr.appendChild(td);
+      }
+      table.appendChild(tr);
+    }
+  </script>
+</html>
