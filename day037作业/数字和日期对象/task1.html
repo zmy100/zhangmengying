@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    h1 {
+      text-align: center;
+      font-size: 88px;
+    }
+  </style>
+  <body>
+    <h1></h1>
+    <script>
+      setInterval(function () {
+        var string = "2024年高考倒计时: <br />";
+        var h1 = document.querySelector("h1");
+        // 获取2024-6-7 09:00的事件戳，获取当前的事件戳，两个事件戳相减
+        var timeStamp1 = parseInt(new Date().getTime() / 1000);
+        var timeStamp2 = parseInt(
+          new Date("2024-6-7 9:00:00").getTime() / 1000
+        );
+        var timeStamp3 = timeStamp2 - timeStamp1;
+
+        // 天
+        var day = parseInt(timeStamp3 / (60 * 60 * 24));
+        if (day < 10) {
+          day = "00" + day;
+        } else if (day < 100) {
+          day = "0" + day;
+        }
+        string = string + day + "天";
+
+        // 小时
+        var hour = parseInt((timeStamp3 % (60 * 60 * 24)) / 3600);
+        if (hour < 10) {
+          hour = "0" + hour;
+        }
+        string = string + hour + "时";
+
+        // 分钟
+        var minute = parseInt(((timeStamp3 % (60 * 60 * 24)) % 3600) / 60);
+        if (minute < 10) {
+          minute = "0" + minute;
+        }
+        string = string + minute + "分";
+
+        // 秒
+        var second = parseInt(
+          (((timeStamp3 % (60 * 60 * 24)) % 3600) % 60) % 60
+        );
+        if (second < 10) {
+          second = "0" + second;
+        }
+        string = string + second + "秒!!!";
+        // 拼接字符串
+        h1.innerHTML = string;
+      }, 1000);
+    </script>
+  </body>
+</html>

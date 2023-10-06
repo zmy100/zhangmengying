@@ -1,0 +1,136 @@
+/* 大致轮廓 */
+/* 清空内外边距 */
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: #f1f3f5;
+}
+.container {
+  width: 1212px;
+  margin: 0 auto;
+}
+div.title {
+  text-align: center;
+  height: 64px;
+  line-height: 63px;
+}
+div.products {
+  height: 786px;
+}
+.fl {
+  float: left;
+}
+.flr {
+  float: right;
+}
+a.place {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+}
+a.more {
+  text-decoration: none;
+  color: #606162;
+  font-size: 14px;
+}
+div.item {
+  width: 291px;
+  height: 385px;
+  background-color: #ffffff;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  position: relative;
+}
+div.item:nth-child(4),
+div.item:last-child {
+  margin-right: 0;
+}
+
+/* 具体内容 */
+/* 顶部图片 */
+div.img {
+  width: 180px;
+  height: 192px;
+  position: absolute;
+  top: 35px;
+  right: 66px;
+}
+div.img > img {
+  width: 100%;
+}
+/* 底部区域 */
+div.bottom {
+  width: 291px;
+  height: 132px;
+  position: absolute;
+  bottom: 0;
+}
+/* 底部产品名称 */
+div.product {
+  width: 243px;
+  height: 19px;
+  margin-top: 8px;
+  margin-left: 30px;
+  margin-bottom: 5px;
+}
+div.product-new {
+  width: 38px;
+  height: 17px;
+  background-color: rgb(250, 48, 64);
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: center;
+  margin-right: -8px;
+}
+div.product-name {
+  width: 200px;
+  height: 16px;
+  color: #000;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+}
+/* 底部产品介绍区域 */
+div.intro {
+  width: 243px;
+  height: 18px;
+  margin-left: 14px;
+  margin-bottom: 7px;
+  text-align: center;
+  color: #b9b9b9;
+  font-size: 13px;
+  line-height: 18px;
+}
+/* 底部产品利息区域 */
+div.desc {
+  width: 243px;
+  margin-left: 80px;
+}
+span.stages {
+  border-radius: 4px;
+  font-size: 12px;
+}
+span.stages.red {
+  color: rgb(207, 10, 44);
+  border: 1px solid rgba(226, 0, 36, 0.4);
+}
+span.stages.black {
+  color: #000;
+  border: 1px solid rgb(0, 0, 0);
+}
+/* 底部产品价格区域 */
+div.price {
+  width: 243px;
+  height: 21px;
+  margin-left: 23px;
+  margin-top: 13px;
+  color: #000;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+}

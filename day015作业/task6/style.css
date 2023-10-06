@@ -1,0 +1,71 @@
+/* 大致框架 */
+/* 清空内外边距 */
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #f7f7fa;
+}
+/* 设置版心 */
+.container {
+  width: 1239px;
+  height: 279px;
+  margin: 0 auto;
+}
+/* 设置左浮动 */
+.fl {
+  float: left;
+}
+div.title {
+  color: #000;
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 140px;
+}
+div.item {
+  width: 300px;
+  height: 130px;
+  margin-right: 13px;
+  margin-bottom: 18px;
+  background-color: #fffeff;
+}
+div.item:nth-child(4),
+div.item:nth-child(8) {
+  margin-right: 0;
+}
+/* 具体内容 */
+div.left {
+  width: 130px;
+  height: 130px;
+}
+div.right {
+  width: 170px;
+  height: 130px;
+}
+div.left > img {
+  width: 100%;
+}
+p.product {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #000;
+  margin-top: 35px;
+}
+p.intro {
+  font-size: 14px;
+  line-height: 22px;
+  color: #000;
+  opacity: 0.55;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+p.price {
+  font-size: 24px;
+  line-height: 1;
+  color: #f34141;
+}
+p.price span.pre {
+  font-size: 15px;
+}

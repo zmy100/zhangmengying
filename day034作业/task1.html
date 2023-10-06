@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="#" method="get">
+      username: <input type="text" /> <br /><br />
+      password: <input type="password" name="" id="" /> <br /><br />
+      <button>登录</button>
+    </form>
+    <script>
+      // 找对象
+      var username = document.querySelector("input:nth-of-type(1)");
+      var password = document.querySelector("input:nth-of-type(2)");
+      var button = document.querySelector("button");
+
+      // 给按钮添加点击事件
+      button.onclick = function () {
+        // 用户名和密码输入正确，则跳转到百度首页
+        if (username.value === "张三" && password.value === "123456") {
+          alert("登录成功!");
+          window.location.href = "https://www.baidu.com";
+          return false;
+          // 用户名和密码输入错误，则弹出“信息不对”
+        } else {
+          alert("信息不对");
+          return false;
+        }
+        return false;
+      };
+    </script>
+  </body>
+</html>

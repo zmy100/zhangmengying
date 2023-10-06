@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      td {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="mytable"></table>
+    <script>
+      // 请动态创建出一个20行12列的表格
+      // 找到表格元素
+      var table = document.getElementById("mytable");
+      // 定义空变量
+      var tr = null,
+        td = null;
+      // 遍历行
+      for (var i = 0; i < 20; i++) {
+        // 创建行元素
+        tr = document.createElement("tr");
+        // 遍历列
+        for (var j = 0; j < 12; j++) {
+          // 创建列元素
+          td = document.createElement("td");
+          // 将列元素添加到行元素中
+          tr.appendChild(td);
+        }
+        // 将行元素添加到表格中
+        table.appendChild(tr);
+      }
+    </script>
+  </body>
+</html>

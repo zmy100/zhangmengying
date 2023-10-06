@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 520px;
+        height: 280px;
+        margin: 0 auto;
+        position: relative;
+      }
+      img:nth-child(1) {
+        width: 520px;
+        height: 280px;
+      }
+      img:nth-child(2) {
+        width: 18px;
+        height: 25px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        border-radius: 0 36px 36px 0;
+      }
+      img:nth-child(3) {
+        width: 18px;
+        height: 25px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        border-radius: 36px 0 0 36px;
+      }
+      ul {
+        width: 65px;
+        height: 13px;
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        margin-left: -73px;
+      }
+      ul > li {
+        float: left;
+        width: 9px;
+        height: 9px;
+        margin: 2px;
+        list-style: none;
+        background-color: #b7b7b7;
+        border-radius: 50%;
+      }
+      ul > li.current {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="./img/mix.jpg" alt="" />
+      <img src="./img/left.png" alt="" />
+      <img src="./img/right.png" alt="" />
+      <ul>
+        <li class="current"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </body>
+</html>

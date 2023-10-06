@@ -1,0 +1,15 @@
+
+.bg-Android {
+    width: 17px; height: 21px;
+    background: url('css_sprites.png') -30px -1px;
+}
+
+.bg-logo1 {
+    width: 9px; height: 12px;
+    background: url('css_sprites.png') -1px -1px;
+}
+
+.bg-iPhone {
+    width: 16px; height: 20px;
+    background: url('css_sprites.png') -12px -1px;
+}

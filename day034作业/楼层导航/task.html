@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        scroll-behavior: smooth;
+      }
+      @font-face {
+        font-family: "ran";
+        src: url(./font/ran.ttf);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      div.container {
+        font-size: 0;
+      }
+      div.container > img {
+        width: 100%;
+      }
+      div.nav {
+        position: fixed;
+        right: 0;
+        top: 40px;
+        width: 150px;
+        height: 800px;
+        background-color: #fff;
+        border-radius: 14px;
+      }
+      ul {
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 10px 10px 50px #888888;
+      }
+      ul > li {
+        list-style: none;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        border-bottom: 1px dashed gray;
+        font-size: 24px;
+        font-family: "ran" !important;
+        letter-spacing: 2px;
+      }
+      ul > li:last-child {
+        border: none;
+      }
+      ul > li:hover {
+        cursor: pointer;
+      }
+      .current {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="./img/001.png" alt="" />
+      <img src="./img/002.png" alt="" />
+      <img src="./img/003.png" alt="" />
+      <img src="./img/004.png" alt="" />
+      <img src="./img/005.png" alt="" />
+      <img src="./img/006.png" alt="" />
+      <img src="./img/007.png" alt="" />
+      <img src="./img/008.png" alt="" />
+      <img src="./img/009.png" alt="" />
+      <img src="./img/010.png" alt="" />
+    </div>
+    <div class="nav">
+      <ul>
+        <li index="0" class="current">Note 11</li>
+        <li index="1">充电</li>
+        <li index="2">屏幕</li>
+        <li index="3">音质</li>
+        <li index="4">影像</li>
+        <li index="5">性能</li>
+        <li index="6">设计</li>
+        <li index="7">潮流限定</li>
+        <li index="8">体验</li>
+        <li index="9">Redmi</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    window.onload = function () {
+      // 找对象
+      var imgArray = document.querySelectorAll("div.container img");
+      var liArray = document.querySelectorAll("div.nav ul li");
+      // 定义一个数组，保存所有距离
+      var distanceArr = [];
+      for (var i = 0; i < imgArray.length; i++) {
+        // 把图片距离顶部的高度保存到数组中
+        distanceArr.push(imgArray[i].offsetTop);
+      }
+      // 楼层添加点击事件
+      for (var i = 0; i < liArray.length; i++) {
+        liArray[i].onclick = function () {
+          // 熄灭所有楼层
+          turnOffHighLight(liArray);
+          // 高亮当前楼层
+          this.className = "current";
+          // 获取当前楼层的index
+          var currentIndex = parseInt(this.getAttribute("index"));
+          // 获取应该滚动到的距离
+          var targetDistance = distanceArr[currentIndex];
+          // 页面滚动到指定的位置
+          document.documentElement.scrollTop = targetDistance;
+        };
+      }
+      // 刚加载的时候，判断一下当前哪个楼层高亮
+      turnOnHighLight(window.scrollY);
+      // 监听window滚动
+      window.onscroll = function () {
+        turnOnHighLight(window.scrollY);
+      };
+      // 关闭楼层高亮
+      function turnOffHighLight(liArray) {
+        for (var i = 0; i < liArray.length; i++) {
+          // 去除className中的current
+          liArray[i].className = "";
+        }
+      }
+      // 楼层高亮
+      function turnOnHighLight(currentDistance) {
+        // 遍历所有图片
+        for (var i = 0; i < imgArray.length; i++) {
+          // 如果滚动条的滚动距离大于等于图片距离顶部的距离，说明开始显示这张图片
+          if (currentDistance >= imgArray[i].offsetTop) {
+            // 熄灭所有楼层
+            turnOffHightLight(liArray);
+            // 高亮当前图片对应的楼层
+            liArray[i].className = "current";
+          }
+        }
+      }
+    };
+  </script>
+</html>

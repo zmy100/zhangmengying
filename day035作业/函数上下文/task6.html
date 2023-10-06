@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fun() {
+        return this.a + this.b;
+      }
+      var a = 11;
+      var b = 22;
+      var obj = {
+        a: 33,
+        b: fun(),
+        fun: fun,
+      };
+      var result = obj.fun();
+      console.log(result); /* 结果:66 */
+      // 1.规则1，obj里面的fun(),a:33,b: fun()
+      // 2.规则2，获取b: fun()的值，找window对象,a=11,b=22
+      // 3.result的值为33+(11+22)
+    </script>
+  </body>
+</html>

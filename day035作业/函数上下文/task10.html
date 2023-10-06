@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        a: 11,
+        b: 22,
+        fun: function () {
+          console.log(this.a + this.b);
+        },
+      };
+      var a = 33;
+      var b = 44;
+      setTimeout(obj.fun, 10); /* 结果:77 */
+      // 规则5，延时器setTimeout调用函数，上下文是window对象，a=33,b=44
+    </script>
+  </body>
+</html>

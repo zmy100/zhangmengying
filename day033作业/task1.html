@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div.container {
+        width: 800px;
+        height: 1000px;
+        margin: 0 auto;
+        text-align: center;
+        border: 1px solid orange;
+        border-radius: 15px;
+        position: relative;
+      }
+      div > img {
+        width: 750px;
+      }
+      div#bottom {
+        text-align: center;
+      }
+      button.left {
+        position: absolute;
+        left: 100px;
+        bottom: 20px;
+      }
+      button.right {
+        position: absolute;
+        right: 100px;
+        bottom: 20px;
+      }
+      #img-container {
+        overflow: hidden;
+        border-radius: 15px;
+        width: 750px;
+        height: 900px;
+        margin: 0px 25px 0 25px;
+      }
+      button {
+        width: 200px;
+        height: 50px;
+        outline: none;
+        cursor: pointer;
+      }
+      #info {
+        position: absolute;
+        left: 380px;
+        bottom: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="img-container">
+        <img id="image" src="img/前女友们/01.jpeg" alt="" />
+      </div>
+      <div id="bottom">
+        <button id="left" class="left" disabled>←上一张</button>
+        <span id="info">1/10</span>
+        <button id="right" class="right">下一张 →</button>
+      </div>
+    </div>
+    <script>
+      // 找对象
+      // 左右按钮
+      var leftBtn = document.getElementById("left");
+      var rightBtn = document.getElementById("right");
+      // 图片
+      var img = document.getElementById("image");
+      // 文本
+      var info = document.getElementById("info");
+      // 定义一个存储图片路径的数组
+      var imgs = [
+        "img/前女友们/01.jpeg",
+        "img/前女友们/02.jpeg",
+        "img/前女友们/03.jpeg",
+        "img/前女友们/04.jpeg",
+        "img/前女友们/05.jpeg",
+        "img/前女友们/06.jpeg",
+        "img/前女友们/07.jpeg",
+        "img/前女友们/08.jpeg",
+        "img/前女友们/09.jpeg",
+        "img/前女友们/10.jpeg",
+      ];
+      // 定义图片的下标
+      var currentImgIndex = 0;
+      // 给左按钮添加点击事件
+      leftBtn.onclick = function () {
+        // 恢复右按钮的点击
+        rightBtn.disabled = false;
+        // 上一张图片
+        currentImgIndex--;
+        // 改变图片地址
+        img.src = imgs[currentImgIndex];
+        // 改变span标签中文本的内容
+        info.innerHTML = currentImgIndex + 1 + "/10";
+        // 判断图片下标，如果图片下标越界就禁止使用按钮
+        if (currentImgIndex === 0) {
+          // 禁用按钮
+          this.disabled = true;
+        }
+      };
+      // 给右按钮添加点击事件
+      rightBtn.onclick = function () {
+        // 恢复左按钮的点击
+        leftBtn.disabled = false;
+        // 下一张图片
+        currentImgIndex++;
+        // 改变图片地址
+        img.src = imgs[currentImgIndex];
+        // 改变span标签中文本的内容
+        info.innerHTML = currentImgIndex + 1 + "/10";
+        // 判断图片下标，如果图片下标越界就禁止使用按钮
+        if (currentImgIndex === imgs.length - 1) {
+          // 禁用按钮
+          this.disabled = true;
+        }
+      };
+    </script>
+  </body>
+</html>

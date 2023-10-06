@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj1 = {
+        a: 1,
+        b: 2,
+        c: [
+          33,
+          44,
+          {
+            m: 55,
+            n: 66,
+            p: [77, 88],
+          },
+        ],
+      };
+      // 定义深克隆函数
+      function deepClone(obj1, type = "object") {
+        // 判断类型，是对象还是数组
+        if (type == "object") {
+          var obj2 = {};
+        }
+        if (type == "array") {
+          var obj2 = [];
+        }
+        // 遍历obj1
+        for (var key in obj1) {
+          // 判断是不是数组
+          if (Array.isArray(obj1[key])) {
+            obj2[key] = deepClone(obj1[key], "array");
+          } else if (typeof obj1[key] === "object") {
+            // 判断是不是对象
+            obj2[key] = deepClone(obj1[key]);
+          } else {
+            obj2[key] = obj1[key];
+          }
+        }
+        return obj2;
+      }
+      // 克隆obj2
+      var obj2 = deepClone(obj1);
+      // 输出obj1,obj2
+      console.log(obj1);
+      console.log(obj2);
+      // 判断时候克隆成功
+      console.log(obj1 === obj2); // false
+    </script>
+  </body>
+</html>

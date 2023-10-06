@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 清空内外边距 */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      /* 设置版心 */
+      .container {
+        width: 1255px;
+        height: 309px;
+        margin: 0 auto;
+        background-color: rebeccapurple;
+      }
+      /* 设置左浮动 */
+      .fl {
+        float: left;
+      }
+      div.title {
+        color: #000;
+        font-size: 24px;
+        font-weight: 500;
+        margin-left: 140px;
+      }
+      div.item {
+        width: 304px;
+        height: 145px;
+        background-color: aquamarine;
+        margin-right: 13px;
+        margin-bottom: 18px;
+      }
+      div.item:nth-child(4),
+      div.item:nth-child(8) {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title">热卖专区</div>
+    <div class="container">
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+    </div>
+  </body>
+</html>

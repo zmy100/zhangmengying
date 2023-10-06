@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 清空内外边距 */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      /* 设置版心 */
+      .container {
+        width: 1201px;
+        height: 769px;
+        margin: 0 auto;
+        background-color: rebeccapurple;
+      }
+      /* 设置标题 */
+      div.info p {
+        color: #333;
+        font-size: 24px;
+        text-align: center;
+      }
+      div.ad {
+        width: 595px;
+        height: 380px;
+        background-color: blue;
+        margin-right: 9.5px;
+        margin-bottom: 9px;
+      }
+      div.item {
+        width: 293px;
+        height: 380px;
+        background-color: olivedrab;
+        margin-right: 9.5px;
+        margin-bottom: 9px;
+      }
+      div.item:nth-child(3),
+      div.item:nth-child(7) {
+        margin-right: 0;
+      }
+      /* 设置左浮动 */
+      .fl {
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="info"><p>精品手机</p></div>
+    <div class="container">
+      <div class="ad fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+      <div class="item fl"></div>
+    </div>
+  </body>
+</html>

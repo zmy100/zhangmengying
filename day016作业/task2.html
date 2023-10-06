@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+      }
+      @keyframes blink {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+      img.dengpao {
+        transform: translate(-50%, -50%);
+      }
+      img.guang {
+        transform: translate(-50%, -77%);
+        animation: blink 0.5s infinite alternate;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="dengpao" src="./img/dengpao.png" alt="" />
+    <img class="guang" src="./img/guang.png" alt="" />
+  </body>
+</html>

@@ -1,0 +1,17 @@
+span {
+  font-size: 100px;
+}
+.demo1,
+.demo4 {
+  color: blue;
+}
+.demo2,
+.demo6 {
+  color: red;
+}
+.demo3 {
+  color: orange;
+}
+.demo5 {
+  color: green;
+}

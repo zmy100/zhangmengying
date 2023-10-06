@@ -1,0 +1,20 @@
+
+.bg-e_bussiness {
+    width: 102px; height: 102px;
+    background: url('css_sprites.png') -1px -1px;
+}
+
+.bg-mail {
+    width: 102px; height: 102px;
+    background: url('css_sprites.png') -105px -1px;
+}
+
+.bg-hello {
+    width: 102px; height: 102px;
+    background: url('css_sprites.png') -209px -1px;
+}
+
+.bg-web1_ {
+    width: 102px; height: 102px;
+    background: url('css_sprites.png') -313px -1px;
+}
