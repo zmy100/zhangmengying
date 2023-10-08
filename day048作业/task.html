@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 清空内外边距 */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      /* 整体布局 */
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: space-between;
+      }
+      /* 头部 */
+      div.header {
+        height: 80px;
+        background-color: red;
+      }
+      /* 底部 */
+      div.footer {
+        height: 80px;
+        background-color: yellow;
+      }
+      div.body {
+        display: flex;
+        flex-grow: 1;
+      }
+      /* 主体部分 */
+      div.main {
+        background-color: #808080;
+        flex-grow: 1;
+      }
+      /* 导航 */
+      div.nav {
+        width: 200px;
+        background-color: green;
+        order: -1;
+      }
+      /* 侧栏 */
+      div.side {
+        width: 200px;
+        background-color: skyblue;
+      }
+      /* 设置字体水平垂直居中，字体大小 */
+      .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header flex-center">头部</div>
+    <div class="body">
+      <div class="main flex-center">主体部分</div>
+      <div class="nav flex-center">导航</div>
+      <div class="side flex-center">侧栏</div>
+    </div>
+    <div class="footer flex-center">底部</div>
+  </body>
+</html>
