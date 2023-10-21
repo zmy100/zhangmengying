@@ -9,12 +9,32 @@
         width: 200px;
         height: 200px;
         background-color: red;
+        margin: 0 auto;
       }
     </style>
   </head>
-  <body style="height: 2000px">
+  <body>
     <div id="box" class="box"></div>
-
-    <script></script>
+    <script>
+      // 找对象,获取div元素
+      var div = document.getElementById("box");
+      // 给div绑定触摸事件
+      // 手指按到屏幕上，div背景颜色变成绿色
+      div.addEventListener("touchstart", function () {
+        this.style.backgroundColor = "green";
+      });
+      // 手指在div里面移动，div背景颜色变成蓝色
+      div.addEventListener("touchmove", function () {
+        this.style.backgroundColor = "blue";
+      });
+      // 手指离开屏幕，div背景颜色变成粉色
+      div.addEventListener("touchend", function () {
+        this.style.backgroundColor = "pink";
+      });
+      // 手指在屏幕上，出现意外事件，div背景颜色变成粉色
+      div.addEventListener("touchcancel", function () {
+        this.style.backgroundColor = "pink";
+      });
+    </script>
   </body>
 </html>

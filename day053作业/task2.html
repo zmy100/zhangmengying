@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>单指拖拽</title>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
       .box {
         width: 200px;
         height: 200px;
@@ -12,9 +16,55 @@
       }
     </style>
   </head>
-  <body style="height: 2000px">
+  <body>
     <div id="box" class="box"></div>
-
-    <script></script>
+    <script>
+      // 找对象
+      const div = document.getElementById("box");
+      // 定义一个函数
+      function drag(element) {
+        // 定义变量，存储位置
+        // 初始位置
+        const startPosition = {
+          x: 0,
+          y: 0,
+        };
+        // 移动距离
+        const moveDistance = {
+          x: 0,
+          y: 0,
+        };
+        // 鼠标最近一次点击位置
+        const lastPointer = {
+          x: 0,
+          y: 0,
+        };
+        // 手指按到屏幕
+        element.addEventListener("touchstart", function (e) {
+          const touch = e.changedTouches[0];
+          lastPointer.x = touch.pageX;
+          lastPointer.y = touch.pageY;
+        });
+        // 手指在div里面移动
+        element.addEventListener("touchmove", function (e) {
+          const touch = e.changedTouches[0];
+          moveDistance.x = startPosition.x + touch.pageX - lastPointer.x;
+          moveDistance.y = startPosition.y + touch.pageY - lastPointer.y;
+          element.style.transform = `translate(${moveDistance.x}px,${moveDistance.y}px)`;
+        });
+        // 手指离开屏幕
+        element.addEventListener("touchend", function () {
+          startPosition.x = moveDistance.x;
+          startPosition.y = moveDistance.y;
+        });
+        //  手指在屏幕上，出现意外事件
+        element.addEventListener("touchchancel", function () {
+          startPosition.x = moveDistance.x;
+          startPosition.y = moveDistance.y;
+        });
+      }
+      // 调用函数
+      drag(div);
+    </script>
   </body>
 </html>
