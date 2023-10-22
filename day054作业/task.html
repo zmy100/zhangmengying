@@ -66,19 +66,19 @@
             // 如果x 轴距离绝对值>y 轴距离绝对值，则是左右滑动
             if (Math.abs(interval.x) > Math.abs(interval.y)) {
               if (interval.x < 0) {
-                // 左滑
+                // x 轴移动为负,左滑
                 direction = "left";
               } else {
-                // 右滑
+                // x 轴移动为正,右滑
                 direction = "right";
               }
             } else {
               // 如果x 轴距离绝对值<y 轴距离绝对值，则是上下滑动
-              if (interval.x < 0) {
-                // 上滑
+              if (interval.y < 0) {
+                // y 轴移动为负,上滑
                 direction = "up";
               } else {
-                // 下滑
+                // y 轴移动为正,下滑
                 direction = "down";
               }
             }
