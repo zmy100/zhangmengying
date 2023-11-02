@@ -24,6 +24,66 @@
     <div class="img-container">
       <img src="./images/1.png" alt="图片" id="img" />
     </div>
-    <script></script>
+    <script>
+      // 找到图片元素
+      var img = document.getElementById("img");
+      // 定义一个图片路径数组
+      var imgs = [
+        "./images/2.jpg",
+        "./images/3.jpg",
+        "./images/4.jpg",
+        "./images/5.jpg",
+        "./images/6.jpg",
+        "./images/7.jpg",
+        "./images/8.jpg",
+        "./images/9.jpg",
+        "./images/10.jpg",
+        "./images/11.jpg",
+        "./images/12.jpg",
+        "./images/13.jpg",
+      ];
+      // 初始化索引变量
+      var i = 0;
+      // 存储已经预加载的图片路径
+      var preloadedImages = [];
+      // 预加载第一张图片和后面的两张图片
+      preloadImages(i, 3);
+      // 给图片添加点击事件
+      img.onclick = function () {
+        // 如果索引小于图片数组的长度
+        if (i < imgs.length) {
+          // 设置图片的src为当前索引对应的图片路径
+          img.src = imgs[i];
+          // 索引值加一
+          i++;
+          // 如果还有图片需要预加载，预加载下面三张图片
+          preloadImages(i, 3);
+        } else {
+          // 如果没有需要加载的图片了，则输出"最后一张图片"
+          console.log("最后一张图片");
+        }
+      };
+      // 定义一个函数，用来预加载图片
+      function preload(src) {
+        // 如果图片路径不在preloadedImages中，进行预加载
+        if (!preloadedImages.includes(src)) {
+          // 创建一个新的Image对象
+          const img = new Image();
+          // 设置图片对象的src属性，使得浏览器可以在显示图片之前先将图片下载到本地
+          img.src = src;
+          // 将图片路径添加到数组中
+          preloadedImages.push(src);
+        }
+      }
+      // 预加载指定数量的图片
+      function preloadImages(startIndex, n) {
+        for (let j = 0; j < n; j++) {
+          if (startIndex + j < imgs.length) {
+            // 预加载指定索引的图片
+            preload(imgs[startIndex + j]);
+          }
+        }
+      }
+    </script>
   </body>
 </html>
