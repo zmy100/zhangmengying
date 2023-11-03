@@ -134,5 +134,48 @@
       <!-- 如果需要分页器 -->
       <div class="swiper-pagination"></div>
     </div>
+    <script>
+      // 定义一个数组
+      var array = [
+        ["logistics-phone", "logistics-person", "logistics-text"],
+        ["purchase-phone", "purchase-person", "purchase-text"],
+      ];
+
+      const mySwiper = new Swiper(".swiper-container", {
+        // 垂直切换
+        direction: "vertical",
+        // 鼠标滚轮切换
+        mousewheel: true,
+        // 如果需要分页器
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        on: {
+          // 初始化
+          init: function (swiper) {
+            // 在初始化时触发一次 slideChangeTransitionEnd 事件
+            // 进入页面的时候有动画效果的
+            this.emit("slideChangeTransitionEnd");
+          },
+          // 监听滑动切换的事件
+          // 切换完成后开始动画
+          slideChangeTransitionEnd: function () {
+            // 遍历当前活动标签的数组
+            array[this.activeIndex].forEach((id) => {
+              // 添加类名
+              document.getElementById(id).classList.add(id + "-active");
+            });
+            // 判断前一个活动标签的索引是否已定义
+            if (typeof this.previousIndex !== "undefined") {
+              // 遍历前一个活动标签的数组
+              array[this.previousIndex].forEach((id) => {
+                // 清除类名
+                document.getElementById(id).classList.remove(id + "-active");
+              });
+            }
+          },
+        },
+      });
+    </script>
   </body>
 </html>

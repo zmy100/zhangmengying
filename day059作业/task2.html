@@ -39,6 +39,9 @@
         line-height: 40px;
         border-bottom: 1px solid #ebebeb;
       }
+      .swiper-container {
+        width: 100vw;
+      }
     </style>
   </head>
   <body>
@@ -74,7 +77,38 @@
       </div>
     </div>
     <script>
-        
+      // 获取tab头部和a标签列表
+      var tabHeader = document.getElementById("tab-header");
+      var aArray = document.getElementsByClassName("tab-label");
+
+      // 给tabHeader添加点击事件
+      tabHeader.onclick = function (e) {
+        // 遍历所有的a标签
+        for (const element of aArray) {
+          // 清除类名"tab-label-active"
+          element.classList.remove("tab-label-active");
+        }
+        // 给当前的a标签添加类名"tab-label-active"
+        e.target.classList.add("tab-label-active");
+        // 将页面滚动到对应的内容处
+        mySwiper.slideTo(e.target.dataset.index);
+      };
+
+      // 创建Swiper对象，用于滑动切换标签内容
+      const mySwiper = new Swiper(".swiper-container", {
+        on: {
+          // 监听滑动切换的事件
+          slideChangeTransitionEnd: function () {
+            // 遍历所有的a标签
+            for (const element of aArray) {
+              // 清除类名"tab-label-active"
+              element.classList.remove("tab-label-active");
+            }
+            // 给当前内容对应的a标签添加类名
+            aArray[this.activeIndex].classList.add("tab-label-active");
+          },
+        },
+      });
     </script>
   </body>
 </html>
