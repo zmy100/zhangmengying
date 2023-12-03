@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>循环展示数据</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root">
+      <ul>
+        <li v-for="(user,index) of users" :key="index">
+          第{{index+1}}名:{{user}}
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          users: ["张三", "李四", "王五", "赵六"],
+        };
+      },
+    }).mount("#root");
+  </script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>代办清单</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <!-- 输入框，输入代办事项 -->
+        <input v-model="todoItem" type="text" />
+        <!-- 按钮绑定点击事件 -->
+        <button v-on:click="handleClick">添加</button>
+        <!-- 遍历代办事项列表 -->
+        <ul>
+          <li v-for="(value,index) of todoList" :key="index">
+            第{{index+1}}件事: {{value}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          todoItem: "",
+          todoList: [],
+        };
+      },
+      methods: {
+        handleClick() {
+          // 如果输入框有值
+          if (this.todoItem) {
+            // 将代办事项添加到列表里面
+            this.todoList.push(this.todoItem);
+            // 清空输入框里面的内容
+            this.todoItem = "";
+          }
+        },
+      },
+    }).mount("#root");
+  </script>
+</html>
