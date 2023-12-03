@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据绑定的三种方式</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 双向数据绑定，v-model -->
+      <input v-model="todoItem" type="text" />
+      <button @click="addTodo">添加</button>
+      <ul>
+        <li v-for="(value,index) of todoList" :key="index">
+          第{{index+1}}件事: {{value}}
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          todoItem: "",
+          todoList: [],
+        };
+      },
+      methods: {
+        addTodo() {
+          if (this.todoItem) {
+            this.todoList.push(this.todoItem);
+            this.todoItem = "";
+          }
+        },
+      },
+    }).mount("#root");
+  </script>
+</html>
