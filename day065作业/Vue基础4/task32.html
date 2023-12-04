@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>静态传值和动态传值</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const hello = {
+        props: ["content1", "content2"],
+        template: `<div> {{content1+content2}} </div>`,
+      };
+      // 创建一个 Vue 应用
+      const app = Vue.createApp({
+        components: { hello },
+        template: `<hello content1="123" content2="456" />`,
+      });
+      // 将 Vue 应用挂载到根节点上
+      const vm = app.mount("#root");
+    </script>
+  </body>
+</html>

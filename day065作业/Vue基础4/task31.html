@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>组件间传值</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 定义了一个局部组件 hello
+      const hello = {
+        props: ["text"],
+        // 定义组件的模板
+        template: `<h1>hello {{text}}</h1>`,
+      };
+      // 定义了一个局部组件 world
+      const world = {
+        props: ["text"],
+        // 定义组件的模板
+        template: `<h1>world {{text}}</h1>`,
+      };
+      // 创建一个 Vue 应用
+      const app = Vue.createApp({
+        // 注册两个组件，hello 和 world
+        components: { hello, world },
+        // 定义根组件的模板
+        template: `
+        <div>
+        <hello text="!!!!" />
+        <world text="????" />
+        </div>
+        `,
+      });
+      // 将 Vue 应用挂载到根节点上
+      const vm = app.mount("#root");
+    </script>
+  </body>
+</html>
