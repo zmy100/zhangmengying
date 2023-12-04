@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-for, for-in, for-of</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      template: `
+      <ul>
+        <template v-for="(value,index) of 10" :key="index">
+        <li v-if="value!==5">{{value}} ==> {{index}}</li>  
+        </template>
+        --------------
+        <template v-for="(value,index) in 10" :key="index">
+        <li v-if="value!==5">{{value}} ==> {{index}}</li>  
+        </template>
+      </ul>
+      `,
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>

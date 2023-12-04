@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件修饰符 stop</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .father {
+        width: 300px;
+        height: 300px;
+        background-color: olivedrab;
+      }
+      .son {
+        width: 200px;
+        height: 200px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 方法一 -->
+      <!-- <div class="father" @click="fatherClick">
+        防止事件冒泡
+        <div class="son" @click.stop="sonClick"></div>
+      </div> -->
+      <!-- 方法二 -->
+      <!-- 点击自身触发 -->
+      <div class="father" @click.self="fatherClick">
+        <div class="son" @click="sonClick"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    Vue.createApp({
+      methods: {
+        fatherClick() {
+          console.log("father click...");
+        },
+        sonClick() {
+          console.log("son click");
+        },
+      },
+    }).mount("#root");
+  </script>
+</html>
