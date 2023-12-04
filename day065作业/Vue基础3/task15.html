@@ -4,25 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>data 的使用</title>
+    <title>methods 的使用</title>
     <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body>
     <div id="root">
-      <div>{{hello}}</div>
-      <div>{{user}}</div>
+      <button>{{buttonClick(buttonString)}}</button>
     </div>
     <script>
       const app = Vue.createApp({
         data() {
           return {
-            hello: "hello world!!!",
-            user: {
-              username: "zhangsan",
-              age: 18,
-              sex: "male",
-            },
+            buttonString: "Click Me!!!",
           };
+        },
+        methods: {
+          buttonClick() {
+            this.buttonString = this.buttonString.toUpperCase(); //进入页面自动触发，字母全部变成大写
+            return this.buttonString;
+          },
         },
       });
       const vm = app.mount("#root");

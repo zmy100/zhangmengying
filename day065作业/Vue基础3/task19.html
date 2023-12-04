@@ -4,25 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>data 的使用</title>
+    <title>侦听器</title>
     <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body>
     <div id="root">
-      <div>{{hello}}</div>
-      <div>{{user}}</div>
+      <div>
+        <h1>{{hello}}</h1>
+        总价: <span>{{total}}</span>
+      </div>
     </div>
     <script>
       const app = Vue.createApp({
         data() {
           return {
-            hello: "hello world!!!",
-            user: {
-              username: "zhangsan",
-              age: 18,
-              sex: "male",
-            },
+            hello: "hello world",
+            price: 200,
+            num: 20,
+            total: 4000,
           };
+        },
+        // 侦听price值的变化
+        watch: {
+          // current当前值,prev修改之前的值
+          price(current, prev) {
+            this.total = this.num * current + "==>" + Date.now();
+          },
         },
       });
       const vm = app.mount("#root");

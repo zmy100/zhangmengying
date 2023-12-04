@@ -4,25 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>data 的使用</title>
+    <title>计算属性</title>
     <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body>
     <div id="root">
-      <div>{{hello}}</div>
-      <div>{{user}}</div>
+      <h1>总价: {{ getTotal() }}</h1>
     </div>
     <script>
       const app = Vue.createApp({
         data() {
           return {
-            hello: "hello world!!!",
-            user: {
-              username: "zhangsan",
-              age: 18,
-              sex: "male",
-            },
+            price: 2000,
+            num: 20,
           };
+        },
+        // methods方法实现计算属性
+        methods: {
+          getTotal() {
+            return this.price * this.num;
+          },
         },
       });
       const vm = app.mount("#root");

@@ -4,25 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>data 的使用</title>
+    <title>methods 的使用</title>
     <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body>
     <div id="root">
-      <div>{{hello}}</div>
-      <div>{{user}}</div>
+      <button @click="buttonClick">click me !!!</button>
     </div>
     <script>
       const app = Vue.createApp({
         data() {
           return {
-            hello: "hello world!!!",
-            user: {
-              username: "zhangsan",
-              age: 18,
-              sex: "male",
-            },
+            hello: "hello world !!!",
           };
+        },
+        methods: {
+          // buttonClick(){} ==> buttonClick:function(){}
+          buttonClick() {
+            console.log("button is clicked ...", this.hello); //this指向vue实例
+          },
         },
       });
       const vm = app.mount("#root");
