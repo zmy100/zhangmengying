@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>radio 的双向数据绑定</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root">
+      男:
+      <input v-model="radioValue" type="radio" value="male" name="sex" id="" />
+      <br />
+      女:
+      <input
+        v-model="radioValue"
+        type="radio"
+        value="female"
+        name="sex"
+        id=""
+      />
+      <br />
+      待定:
+      <input
+        v-model="radioValue"
+        type="radio"
+        value="unkown"
+        name="sex"
+        id=""
+      />
+      <br />
+      <h1>性别: {{radioValue}}</h1>
+    </div>
+  </body>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          radioValue: "",
+        };
+      },
+    }).mount("#root");
+  </script>
+</html>

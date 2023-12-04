@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>checkbox 的双向数据绑定</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root">
+      抽烟<input
+        v-model="checkboxValue"
+        type="checkbox"
+        value="smoke"
+        name=""
+        id=""
+      />
+      <br />
+      喝酒<input
+        v-model="checkboxValue"
+        type="checkbox"
+        value="drink"
+        name=""
+        id=""
+      />
+      <br />
+      烫头<input
+        v-model="checkboxValue"
+        type="checkbox"
+        value="perm"
+        name=""
+        id=""
+      />
+      <br />
+      <h1>爱好: {{checkboxValue}}</h1>
+    </div>
+  </body>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          checkboxValue: [],
+        };
+      },
+    }).mount("#root");
+  </script>
+</html>
