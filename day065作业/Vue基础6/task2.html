@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>插件</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    // 定义一个自定义插件
+    const myPlugin = {
+      // install方法会在插件被安装时调用
+      install(app, options) {
+        // 执行一些插件的初始化逻辑
+        // app是Vue应用的实例,options是插件的选项
+        console.log(app, options);
+      },
+    };
+    // 创建一个Vue应用
+    const app = Vue.createApp({
+      template: `<hello />`,
+    });
+    // 注册一个名为hello的组件
+    app.component("hello", {
+      template: `<div>hello world</div>`,
+    });
+    // 使用自定义插件，并传入选项
+    app.use(myPlugin, { username: "zhangsan" });
+    // 将Vue应用挂载到页面上
+    const vm = app.mount("#root");
+  </script>
+</html>

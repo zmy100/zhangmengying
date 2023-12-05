@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>传送门</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .area {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background-color: olivedrab;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .mask {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="area">
+        <button @click="handleClick">点击</button>
+        <teleport to="body">
+          <div v-show="show" class="mask">{{hello}}</div>
+        </teleport>
+      </div>
+    </div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          show: false,
+          hello: "hello world!!!",
+        };
+      },
+      methods: {
+        handleClick() {
+          this.show = !this.show;
+        },
+      },
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>

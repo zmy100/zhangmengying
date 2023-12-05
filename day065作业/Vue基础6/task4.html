@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>编写数据校验插件</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const validatePlugin = {
+      install: function (app, options) {
+        app.mixin({
+          mounted() {
+            for (const key in this.$options.rules) {
+              const item = this.$options.rules[key];
+              this.$watch(key, (value) => {
+                const result = item.validate(value);
+                if (!result) {
+                  console.log(item.message);
+                }
+              });
+            }
+          },
+        });
+      },
+    };
+    const app = Vue.createApp({
+      data() {
+        return {
+          name: "zhangsan",
+          age: 18,
+        };
+      },
+      rules: {
+        age: {
+          validate: (age) => age > 25,
+          message: "太年轻了",
+        },
+        name: {
+          validate: (name) => name.length > 5,
+          message: "名字太短了",
+        },
+      },
+      template: `
+      <div>用户名: {{name}}, 年龄: {{age}}</div>
+      `,
+    });
+    app.use(validatePlugin);
+    const vm = app.mount("#root");
+  </script>
+</html>
