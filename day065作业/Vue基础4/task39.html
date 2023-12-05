@@ -10,12 +10,45 @@
   <body>
     <div id="root"></div>
     <script>
+      // 创建vue应用实例
       const app = Vue.createApp({
+        // 定义数据
         data() {
-          return {};
+          return {
+            count: 1,
+          };
         },
-        template: ``,
+        // 定义方法
+        methods: {
+          handleAddOne(num) {
+            // count自增
+            this.count += num;
+          },
+        },
+        // 定义模板
+        template: `
+      <test :count="count" @add-one="handleAddOne" />
+      `,
       });
+      // 定义test组件
+      app.component("test", {
+        // 声明向外触发的事件
+        emits: ["add"],
+        // 定义方法
+        methods: {
+          handleButtonClick() {
+            // 向外触发一个addOne事件，传递参数2
+            this.$emit("add", 2);
+          },
+        },
+        // 定义属性
+        props: ["count"],
+        // 定义模板
+        template: `
+      <button @click="handleButtonClick">{{count}}</button>
+      `,
+      });
+      // 挂载Vue实例到HTML元素上
       const vm = app.mount("#root");
     </script>
   </body>

@@ -12,9 +12,28 @@
     <script>
       const app = Vue.createApp({
         data() {
-          return {};
+          return {
+            content1: "hello world1",
+            content2: "hello world2",
+            content3: "hello world3",
+          };
         },
-        template: ``,
+        template: `
+			<test :content1="content1" :content2="content2" :content3="content3" />
+		  `,
+      });
+      app.component("test", {
+        // props: ["content"],
+        mounted() {
+          console.log(this.$attrs);
+        },
+        template: `
+			<div>123</div>
+			<div :msg="$attrs.content2">123</div>
+			<div>123</div>
+			<div>123</div>
+			<div>123</div>
+		  `,
       });
       const vm = app.mount("#root");
     </script>
