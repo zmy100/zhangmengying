@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作用域插槽</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      // 定义组件模板
+      template: `
+      <list v-slot="slotProps">
+          <button>{{slotProps.student}}</button>
+      </list>
+      `,
+    });
+    // 定义列表组件 "list"
+    app.component("list", {
+      // 初始数据为学生名单数组
+      data() {
+        return {
+          students: ["张三", "李四", "王五"],
+        };
+      },
+      // 定义列表组件的模板，使用 slot 标签接收应用中传入的插槽内容，展示学生名单列表
+      template: `
+      <div>
+          <slot v-for="student of students" :student="student"></slot>
+      </div>       
+      `,
+    });
+    // 将 Vue 应用挂载到 "root" 元素上
+    const vm = app.mount("#root");
+  </script>
+</html>

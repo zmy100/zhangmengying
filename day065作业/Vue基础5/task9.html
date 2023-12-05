@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>provide/inject</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      // 在应用级别注入 "count" 属性，值为123
+      provide: {
+        count: 123,
+      },
+      // 定义组件模板
+      template: `<second />`,
+    });
+    // 定义名为 "second" 的组件
+    app.component("second", {
+      // 定义组件模板，内部使用 "third" 组件
+      template: `<third />`,
+    });
+    // 定义名为 "third" 的组件
+    app.component("third", {
+      // 定义组件模板，内部使用 "forth" 组件
+      template: `<forth />`,
+    });
+    // 定义名为 "forth" 的组件
+    app.component("forth", {
+      // 使用 "count" 属性注入，绑定到组件的模板中
+      inject: ["count"],
+      // 定义组件模板，显示注入的 "count" 属性
+      template: `<div>{{count}}</div>`,
+    });
+    // 将 Vue 应用挂载到 "root" 元素上
+    const vm = app.mount("#root");
+  </script>
+</html>

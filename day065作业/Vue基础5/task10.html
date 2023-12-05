@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mix-in</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const myMixIn = {
+      data() {
+        return {
+          hello: "hello world",
+          count: 100,
+        };
+      },
+      methods: {
+        handleClick() {
+          console.log("mixin click...");
+        },
+      },
+      mounted() {
+        console.log("mixin mounted...");
+      },
+    };
+    const app = Vue.createApp({
+      mixins: [myMixIn],
+      data() {
+        return {
+          count: 1,
+        };
+      },
+      methods: {
+        handleClick() {
+          console.log("component click...");
+        },
+      },
+      mounted() {
+        console.log("component mounted...");
+      },
+      template: `<div @click="handleClick">{{count}} ==> {{hello}}</div>`,
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>

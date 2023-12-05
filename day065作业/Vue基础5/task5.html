@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动态组件</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          currentItem: "my-input",
+        };
+      },
+      methods: {
+        handleClick() {
+          if (this.currentItem === "my-input") {
+            this.currentItem = "my-title";
+          } else {
+            this.currentItem = "my-input";
+          }
+        },
+      },
+      //   <my-input v-show="currentItem==='my-input'" />
+      //   <my-title v-show="currentItem==='my-title'" />
+      template: `
+      <keep-alive>
+      <component :is="currentItem" />
+      </keep-alive>
+      <button @click="handleClick">切换</button>
+      `,
+    });
+    app.component("my-input", {
+      template: `
+	  <input type="text"/>
+      `,
+    });
+    app.component("my-title", {
+      template: `
+	  <h1>hello world</h1>
+      `,
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>
