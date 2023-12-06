@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setup 的参数</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      // 在根组件的模板中使用了自定义组件并传递了子组件
+      template: `<hello><div>zhangsan</div></hello>`,
+    });
+    app.component("hello", {
+      setup(props, context) {
+        // 通过 context 参数获取组件的属性、插槽和事件
+        const { attrs, slots, emit } = context;
+        // 输出默认插槽内容到控制台
+        console.log(slots.default());
+        return function () {
+          // 通过 render 函数返回一个 h1 元素，样式为红色，并渲染默认插槽内容
+          return Vue.h("h1", { style: "color:red" }, slots.default());
+        };
+      },
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>

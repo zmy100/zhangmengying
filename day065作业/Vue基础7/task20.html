@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setup 中的 watch</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root">
+      <input type="text" v-model="username" />
+      <h1>{{username}}</h1>
+      <input type="text" v-model="userEnglishName" />
+      <h1>{{userEnglishName}}</h1>
+    </div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      setup() {
+        const { reactive, watch, toRefs } = Vue;
+        const userObj = reactive({
+          username: "zhangsan",
+          userEnglishName: "tony",
+        });
+        watch(
+          // 监控对象的属性写成函数
+          [() => userObj.username, () => userObj.userEnglishName],
+          (
+            [currentValue, currentEnglishValue],
+            [previousValue, previousEnglishValue]
+          ) => {
+            console.log(
+              `当前的值: ${currentValue}, 最开始的值: ${previousValue}`
+            );
+            console.log(
+              `当前英文名的值: ${currentEnglishValue}, 最开始英文名的值: ${previousEnglishValue}`
+            );
+          }
+        );
+        // 解构赋值
+        const { username, userEnglishName } = toRefs(userObj);
+        return { username, userEnglishName };
+      },
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>

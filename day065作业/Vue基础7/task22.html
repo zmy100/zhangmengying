@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生命周期函数的新写法</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      setup() {
+        const { onMounted } = Vue;
+        onMounted(() => {
+          console.log("onMounted...");
+        });
+        return {};
+      },
+      // 添加一个空的模板或者具体的渲染函数来解决警告问题
+      template: `<div></div>`,
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>

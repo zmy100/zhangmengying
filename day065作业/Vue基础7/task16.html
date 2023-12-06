@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setup 的参数</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      methods: {
+        handleChange() {
+          alert("change...");
+        },
+      },
+      template: `<hello @change="handleChange" />`,
+    });
+    app.component("hello", {
+      template: `<h1 @click="handleClick">123</h1>`,
+      setup(props, context) {
+        const { attrs, slots, emit } = context;
+        function handleClick() {
+          emit("change");
+        }
+        return {
+          handleClick,
+        };
+      },
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>

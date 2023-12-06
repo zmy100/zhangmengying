@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Provide, Inject</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      setup() {
+        const { provide } = Vue;
+        // 使用provide函数提供数据，key为"username"，value为"zhangsan"
+        provide("username", "zhangsan");
+        return {};
+      },
+      // 也可以直接在组件选项中使用provide属性提供数据
+      provide: { username: "zhangsan" },
+      // 使用child组件
+      template: `<child />`,
+    });
+    app.component("child", {
+      setup() {
+        const { inject } = Vue;
+        // 使用inject函数从父组件中注入数据，key为"username"，如果取不到数据则使用默认值"lisi"
+        const username = inject("username", "lisi");
+        return { username };
+      },
+      // 声明需要从父组件中注入的数据，这里声明需要注入"username"
+      inject: ["username"],
+      // 显示注入的username
+      template: `<div>this is child, and {{username}}</div>`,
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>

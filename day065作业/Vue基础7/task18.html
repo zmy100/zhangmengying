@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>computed 方法生成计算属性</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root">
+      <button @click="handleClick">{{count}}</button> ===>{{countMultiplyTwo}}
+    </div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      setup() {
+        const { ref, computed } = Vue;
+        // 定义一个响应式数据count
+        const count = ref(0);
+        // 定义一个handleClick来让count的数量,每次加1
+        const handleClick = () => {
+          count.value += 1;
+        };
+        // 定义一个计算属性
+        const countMultiplyTwo = computed(() => {
+          return count.value * 2;
+        });
+        // 返回count，handleClick和countMultiplyTwo
+        return {
+          count,
+          handleClick,
+          countMultiplyTwo,
+        };
+      },
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setup 的参数</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    // 创建一个Vue应用实例
+    const app = Vue.createApp({
+      // 在根组件的模板中使用了自定义组件
+      template: `<hello>zhangsan</hello>`,
+    });
+    app.component("hello", {
+      // 自定义组件的模板
+      template: `<h1>hello world</h1>`,
+      setup(props, context) {
+        // 在 setup 函数中通过 context 参数获取组件的属性、插槽和事件
+        const { attrs, slots, emit } = context;
+        // 输出默认插槽内容到控制台
+        console.log(slots.default());
+      },
+    });
+    // 挂载根组件
+    const vm = app.mount("#root");
+  </script>
+</html>

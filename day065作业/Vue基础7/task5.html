@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>composition api</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    // 创建 Vue 应用程序
+    const app = Vue.createApp({
+      // setup 函数用于组件的状态定义，组件内部数据的初始化可以放在 setup 里面进行
+      setup() {
+        // 返回数据对象，可以在模板中使用
+        return {
+          // 定义一个 hello 变量，初始值为 "hello world"
+          hello: "hello world",
+          showHello() {
+            // 定义一个方法，输出日志
+            console.log("setup hello world...");
+          },
+        };
+      },
+      // methods 中包含组件的方法
+      methods: {
+        handleClick() {
+          // 调用 setup 函数中定义的方法 showHello
+          this.$options.setup().showHello();
+        },
+      },
+      // 定义组件模板
+      // 在 h1 标签中使用 hello 变量，并在点击事件中执行 handleClick 方法
+      template: `<h1 @click="handleClick">{{hello}}</h1>`,
+    });
+    // 应用程序挂载到 #root 元素上
+    const vm = app.mount("#root");
+  </script>
+</html>
