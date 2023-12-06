@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>类名的重命名</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      /* 入场动画开始状态 */
+      .hello-enter-from {
+        opacity: 0;
+      }
+      /* 入场动画结束状态 */
+      .hello-enter-to {
+        opacity: 1;
+      }
+      /* 出场动画结束状态 */
+      .hello-leave-to {
+        opacity: 0;
+      }
+      /* 入场动画过渡效果 */
+      /* 出场动画过渡效果 */
+      .hello-enter-active,
+      .hello-leave-active {
+        transition: opacity 1s linear;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <button @click="toggleStatus">切换</button>
+      <transition name="hello">
+        <span v-if="isShow">hello world</span>
+      </transition>
+    </div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          isShow: true,
+        };
+      },
+      methods: {
+        toggleStatus() {
+          this.isShow = !this.isShow;
+        },
+      },
+    });
+    const vm = app.mount("#root");
+  </script>
+</html>
